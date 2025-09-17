@@ -1,11 +1,15 @@
 <!doctype html>
 <html lang="ar" dir="rtl">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>كيفية تنزيل Kali Linux — Malek Alastal</title>
+
   <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
+
+  <!-- لو تحب تضيف Bootstrap متجاوب (اختياري) -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.rtl.min.css" rel="stylesheet">
 </head>
 <body>
   <header>
@@ -26,17 +30,79 @@
     </nav>
   </header>
 
-  <section class="hero">
+  <section class="hero container my-5">
     <div class="hero-left">
-      <h1>كيفية تنزيل Kali Linux</h1>
-      <p>شرح عملي لتثبيت نظام Kali Linux على الحاسوب مع الأدوات المهمة للمطورين، وأفضل الممارسات للتثبيت الآمن.</p>
-      <a class="btn" href="order.html">اطلب هذه الخدمة</a>
-      <a class="btn ghost" href="index.html">عودة للرئيسية</a>
+      <h1 class="mb-4">كيفية تنزيل Kali Linux</h1>
+      <p class="lead mb-5">شرح عملي لتثبيت نظام Kali Linux على الحاسوب مع الأدوات المهمة للمطورين، وأفضل الممارسات للتثبيت الآمن.</p>
+
+      <h2 class="mb-3">تثبيت Kali Linux على VMware خطوة بخطوة</h2>
+
+      <ol class="mb-4">
+        <li>
+          <strong>تحميل نسخة Kali Linux الرسمية (ملف الـ ISO):</strong><br>
+          افتح موقع Kali Linux الرسمي: 
+          <a href="https://www.kali.org/get-kali/" target="_blank" rel="noopener noreferrer">https://www.kali.org/get-kali/</a><br>
+          اختَر النسخة المناسبة (64-بت غالبًا) وحمّل ملف الـ ISO.
+        </li>
+        <li class="mt-3">
+          <strong>تحميل وتثبيت برنامج VMware Workstation Player:</strong><br>
+          اذهب لموقع VMware لتحميل النسخة المجانية: 
+          <a href="https://www.vmware.com/products/workstation-player.html" target="_blank" rel="noopener noreferrer">https://www.vmware.com</a><br>
+          حمّل البرنامج المناسب لنظام تشغيلك (ويندوز أو لينكس) وثبّته.
+        </li>
+        <li class="mt-3">
+          <strong>إنشاء جهاز افتراضي جديد (New Virtual Machine):</strong><br>
+          افتح VMware Workstation Player، اضغط على "Create a New Virtual Machine"، ثم اختَر ملف الـ ISO الخاص بـ Kali Linux.<br>
+          تابع الخطوات واضغط Next.
+        </li>
+        <li class="mt-3">
+          <strong>إعدادات الجهاز الافتراضي:</strong><br>
+          - سمِّ الجهاز الافتراضي (مثلاً "Kali Linux").<br>
+          - اختَر مكان التخزين.<br>
+          - حدد حجم القرص (20 جيجابايت أو أكثر).<br>
+          - اختر "Split virtual disk into multiple files".<br>
+          - اضغط Next ثم Finish.
+        </li>
+        <li class="mt-3">
+          <strong>ضبط موارد الجهاز (RAM والمعالج):</strong><br>
+          افتح إعدادات الجهاز الافتراضي وزد الرام لـ 2 جيجابايت (2048 ميجابايت) أو أكثر.<br>
+          يمكنك زيادة عدد أنوية المعالج إذا أردت.
+        </li>
+        <li class="mt-3">
+          <strong>تشغيل الجهاز الافتراضي وتثبيت Kali Linux:</strong><br>
+          شغّل الجهاز الافتراضي.<br>
+          اختر "Graphical install" وابدأ التثبيت باتباع التعليمات (اختيار اللغة، المنطقة الزمنية، تقسيم القرص، إنشاء المستخدم).
+        </li>
+        <li class="mt-3">
+          <strong>إكمال التثبيت وإعادة التشغيل:</strong><br>
+          بعد الانتهاء، أعد تشغيل الجهاز الافتراضي.<br>
+          ستبدأ Kali Linux بالعمل داخل VMware.
+        </li>
+        <li class="mt-3">
+          <strong>استخدام Kali Linux بأمان داخل VMware:</strong><br>
+          يمكنك تجربة الأدوات والبرامج بأمان دون التأثير على نظام تشغيلك الأساسي.
+        </li>
+      </ol>
+
+      <h3 class="mt-5">نصائح مهمة:</h3>
+      <ul>
+        <li>حافظ على تحديث Kali Linux باستمرار.</li>
+        <li>استخدم الجهاز الافتراضي فقط للأغراض القانونية.</li>
+        <li>قم بتثبيت أدوات VMware Tools لتحسين الأداء.</li>
+      </ul>
+
+      <div class="mt-4">
+        <a class="btn btn-primary me-2" href="order.html">اطلب هذه الخدمة</a>
+        <a class="btn btn-outline-secondary" href="index.html">عودة للرئيسية</a>
+      </div>
     </div>
   </section>
 
-  <footer>
+  <footer class="text-center py-4">
     © حق الملكية — Malek Alastal
   </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>
