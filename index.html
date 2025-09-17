@@ -2,52 +2,36 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Malek Alastal | Software Engineer</title>
+  <title>Malek AI Upscaler</title>
   <link rel="stylesheet" href="style.css">
-  <link rel="icon" href="assets/favicon.ico">
 </head>
 <body>
   <header>
-    <img src="assets/profile.jpg" alt="Malek Alastal" class="profile-img">
-    <h1>Malek Alastal</h1>
-    <p>Software Engineer & Creative Technologist</p>
+    <img src="assets/logo.png" alt="Malek Logo" class="logo">
+    <h1>Malek AI Upscaler</h1>
+    <p>Enhance your images with smart AI technology</p>
   </header>
 
-  <section id="about">
-    <h2>About Me</h2>
-    <p>I’m Malek, a passionate developer from Gaza. I build smart, scalable, and elegant solutions using modern technologies. I believe code is not just logic—it’s art.</p>
+  <section id="upload">
+    <h2>Upload Your Image</h2>
+    <div id="drop-zone">Drag & Drop or Click to Upload</div>
+    <input type="file" id="file-input" accept="image/*">
   </section>
 
-  <section id="skills">
-    <h2>Skills</h2>
-    <ul>
-      <li>Frontend: HTML, CSS, JavaScript, React</li>
-      <li>Backend: Node.js, Express, MongoDB</li>
-      <li>AI: Python, TensorFlow, OpenCV</li>
-      <li>Tools: Git, Docker, Firebase</li>
-    </ul>
-  </section>
-
-  <section id="projects">
-    <h2>Projects</h2>
-    <div class="project">
-      <h3>AI Recommender System</h3>
-      <p>A smart recommendation engine built with Python and machine learning.</p>
-      <a href="https://github.com/malekalastal/ai-recommender" target="_blank">View Project</a>
+  <section id="preview">
+    <h2>Preview</h2>
+    <div class="compare">
+      <img id="before-img" src="assets/demo-before.jpg" alt="Before">
+      <img id="after-img" src="assets/demo-after.jpg" alt="After">
     </div>
-    <!-- Add more projects here -->
   </section>
 
-  <section id="contact">
-    <h2>Contact</h2>
-    <p>Email: <a href="mailto:malek@example.com">malek@example.com</a></p>
-    <p>WhatsApp: <a href="https://wa.me/970599XXXXXX">Message Me</a></p>
-    <p><a href="cv/malek-cv.pdf" download>Download CV</a></p>
-  </section>
+  <button id="upscale-btn">Start Upscaling</button>
 
   <footer>
     <p>© 2025 Malek Alastal. All rights reserved.</p>
   </footer>
+
+  <script src="script.js"></script>
 </body>
 </html>
