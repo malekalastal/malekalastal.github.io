@@ -1,28 +1,28 @@
-// smooth scroll فقط للروابط داخل نفس الصفحة
+// Smooth scroll للروابط الداخلية
 document.querySelectorAll('a[href^="#"]').forEach(a=>{
-  a.addEventListener('click',function(e){
+  a.addEventListener('click', function(e){
     e.preventDefault();
     const id = this.getAttribute('href').slice(1);
     const el = document.getElementById(id);
-    if(el) el.scrollIntoView({behavior:'smooth',block:'start'});
+    if(el) el.scrollIntoView({behavior:'smooth', block:'start'});
   });
 });
 
-// خلفية دوائر متحركة
+// خلفية Canvas متحركة (دوائر)
 const canvas = document.getElementById('bgCanvas');
 if(canvas){
   const ctx = canvas.getContext('2d');
   let w,h;
-  function resize(){w=canvas.width=window.innerWidth;h=canvas.height=window.innerHeight}
+  function resize(){w=canvas.width=window.innerWidth; h=canvas.height=window.innerHeight;}
   window.addEventListener('resize',resize);
   resize();
 
-  const circles = Array.from({length:40},()=>({
+  const circles = Array.from({length:50},()=>({
     x:Math.random()*w,
     y:Math.random()*h,
     r:Math.random()*4+2,
-    dx:(Math.random()-0.5)*0.6,
-    dy:(Math.random()-0.5)*0.6
+    dx:(Math.random()-0.5)*0.5,
+    dy:(Math.random()-0.5)*0.5
   }));
 
   function animate(){
@@ -41,16 +41,25 @@ if(canvas){
   animate();
 }
 
-// أنيميشن ظهور الكروت عند التمرير
+// ظهور الكروت عند Scroll (Services & Portfolio)
 const cards = document.querySelectorAll('.card');
 function showCards(){
   const triggerBottom = window.innerHeight * 0.9;
-  cards.forEach(card => {
-    const cardTop = card.getBoundingClientRect().top;
-    if(cardTop < triggerBottom){
+  cards.forEach(card=>{
+    const top = card.getBoundingClientRect().top;
+    if(top < triggerBottom){
       card.classList.add('show');
     }
   });
 }
 window.addEventListener('scroll', showCards);
 showCards();
+
+// Parallax خفيف للPortfolio عند Scroll
+const portfolioGrid = document.querySelector('.portfolio-grid');
+window.addEventListener('scroll', ()=>{
+  if(portfolioGrid){
+    const scroll = window.scrollY;
+    portfolioGrid.style.transform = `translateY(${scroll*0.05}px)`;
+  }
+});
