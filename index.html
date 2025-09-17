@@ -4,29 +4,39 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Malek Alastal — خدمات برمجة مدفوعة</title>
+
+  <!-- خطوط -->
   <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <!-- Bootstrap RTL -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.rtl.min.css" rel="stylesheet">
+
+  <!-- ملف التنسيق الخاص بك -->
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <canvas id="bgCanvas"></canvas>
 
-  <header>
-    <div class="brand">
-      <div class="logo">M</div>
-      <div>
-        <div class="name">Malek Alastal</div>
-        <div class="role">مبرمج | مطوّر ويب | سكربتات</div>
+  <!-- شريط التنقل المتجاوب -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">Malek Alastal</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item"><a class="nav-link" href="about.html">نبذة عني</a></li>
+          <li class="nav-item"><a class="nav-link" href="web.html">انشاء مواقع ويب</a></li>
+          <li class="nav-item"><a class="nav-link" href="scripts.html">انشاء سكربتات</a></li>
+          <li class="nav-item"><a class="nav-link" href="kali.html">كيفية تنزيل كالي لينكس</a></li>
+          <li class="nav-item"><a class="nav-link btn btn-warning text-white ms-2" href="order.html">اطلب خدمة</a></li>
+        </ul>
       </div>
     </div>
-    <nav>
-      <a href="about.html">نبذة عني</a>
-      <a href="web.html">انشاء مواقع ويب</a>
-      <a href="scripts.html">انشاء سكربتات</a>
-      <a href="kali.html">كيفية تنزيل كالي لينكس</a>
-      <a href="order.html" class="badge">اطلب خدمة</a>
-    </nav>
-  </header>
+  </nav>
 
+  <!-- المحتوى الرئيسي -->
   <section class="hero">
     <div class="hero-left">
       <h1>مرحبا — أنا Malek Alastal، مبرمج ومطور حلول ويب</h1>
@@ -38,10 +48,13 @@
     </div>
   </section>
 
+  <!-- الفوتر -->
   <footer>
     © حق الملكية — Malek Alastal
   </footer>
 
+  <!-- ملفات السكربت -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
   <script src="script.js"></script>
 </body>
 </html>
