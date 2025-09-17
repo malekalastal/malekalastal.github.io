@@ -5,51 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Malek Alastal — خدمات برمجة مدفوعة</title>
   <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&display=swap" rel="stylesheet">
-  <style>
-    :root{
-      --accent:#0b84ff;
-      --bg:#0f1724;
-      --card:#0b1220;
-      --muted:#9aa6b2;
-    }
-    *{box-sizing:border-box;margin:0;padding:0}
-    body{font-family:'Cairo',sans-serif;background:var(--bg);color:#e6eef6;overflow-x:hidden;position:relative;}
-
-    /* خلفية متحركة (دوائر) */
-    #bgCanvas{position:fixed;top:0;left:0;width:100%;height:100%;z-index:-1;background:linear-gradient(180deg,#071024 0%, #0b1220 100%)}
-
-    header{display:flex;align-items:center;justify-content:space-between;padding:18px 28px;background:rgba(255,255,255,0.02);backdrop-filter:blur(4px)}
-    .brand{display:flex;align-items:center;gap:12px}
-    .logo{width:46px;height:46px;border-radius:10px;background:var(--accent);display:flex;align-items:center;justify-content:center;font-weight:700}
-    nav{display:flex;gap:10px;align-items:center}
-    nav a{color:var(--muted);text-decoration:none;padding:8px 12px;border-radius:8px}
-    nav a:hover{color:#fff;background:rgba(255,255,255,0.03)}
-    .hero{padding:60px 28px;display:flex;gap:30px;align-items:center}
-    .hero-left{flex:1}
-    .hero h1{font-size:34px;margin:0 0 8px}
-    .hero p{color:var(--muted);margin:0 0 18px}
-    .cta{display:flex;gap:12px}
-    .btn{background:var(--accent);color:#fff;padding:10px 16px;border-radius:10px;text-decoration:none;font-weight:600}
-    .btn.ghost{background:transparent;border:1px solid rgba(255,255,255,0.06);color:var(--muted)}
-    .services{padding:30px 28px;display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:16px}
-    .card{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));padding:18px;border-radius:12px;border:1px solid rgba(255,255,255,0.03)}
-    .card h3{margin:0 0 8px}
-    .price{font-size:20px;margin-top:10px;color:var(--accent);font-weight:700}
-    .features{color:var(--muted);font-size:14px;margin-top:8px}
-    .contact{padding:28px;border-top:1px solid rgba(255,255,255,0.02)}
-    footer{padding:18px 28px;color:var(--muted);font-size:14px}
-    @media (max-width:800px){
-      .hero{flex-direction:column;align-items:flex-start}
-      nav{display:none}
-    }
-    .badge{display:inline-block;padding:6px 10px;background:rgba(255,255,255,0.02);border-radius:999px;color:var(--muted);font-weight:600}
-    .price-small{font-size:16px;color:var(--accent);font-weight:700}
-    .small{font-size:13px;color:var(--muted)}
-    .divider{height:1px;background:rgba(255,255,255,0.02);margin:18px 0}
-    form .row{display:flex;gap:8px}
-    input,textarea{width:100%;padding:10px;border-radius:8px;border:1px solid rgba(255,255,255,0.03);background:transparent;color:inherit}
-    textarea{min-height:100px}
-  </style>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <canvas id="bgCanvas"></canvas>
@@ -57,8 +13,8 @@
     <div class="brand">
       <div class="logo">M</div>
       <div>
-        <div style="font-weight:700">Malek Alastal</div>
-        <div style="font-size:13px;color:var(--muted)">مبرمج | مطوّر ويب | سكربتات</div>
+        <div class="name">Malek Alastal</div>
+        <div class="role">مبرمج | مطوّر ويب | سكربتات</div>
       </div>
     </div>
     <nav>
@@ -81,7 +37,7 @@
     </div>
   </section>
 
-  <!-- باقي الأقسام نفسها -->
+  <!-- ضع باقي الأقسام هنا -->
 
   <section id="contact" class="contact">
     <h2>اطلب الخدمة / تواصل</h2>
@@ -106,45 +62,6 @@
     © حق الملكية — Malek Alastal
   </footer>
 
-  <script>
-    document.querySelectorAll('a[href^="#"]').forEach(a=>{
-      a.addEventListener('click',function(e){
-        e.preventDefault();
-        const id = this.getAttribute('href').slice(1);
-        const el = document.getElementById(id);
-        if(el) el.scrollIntoView({behavior:'smooth',block:'start'});
-      });
-    });
-
-    const canvas = document.getElementById('bgCanvas');
-    const ctx = canvas.getContext('2d');
-    let w,h;
-    function resize(){w=canvas.width=window.innerWidth;h=canvas.height=window.innerHeight}
-    window.addEventListener('resize',resize);
-    resize();
-
-    const circles = Array.from({length:40},()=>({
-      x:Math.random()*w,
-      y:Math.random()*h,
-      r:Math.random()*4+2,
-      dx:(Math.random()-0.5)*0.6,
-      dy:(Math.random()-0.5)*0.6
-    }));
-
-    function animate(){
-      ctx.clearRect(0,0,w,h);
-      circles.forEach(c=>{
-        ctx.beginPath();
-        ctx.arc(c.x,c.y,c.r,0,Math.PI*2);
-        ctx.fillStyle='rgba(11,132,255,0.3)';
-        ctx.fill();
-        c.x+=c.dx; c.y+=c.dy;
-        if(c.x<0||c.x>w) c.dx*=-1;
-        if(c.y<0||c.y>h) c.dy*=-1;
-      });
-      requestAnimationFrame(animate);
-    }
-    animate();
-  </script>
+  <script src="script.js"></script>
 </body>
 </html>
