@@ -1,20 +1,8 @@
-const dropZone = document.getElementById("drop-zone");
-const fileInput = document.getElementById("file-input");
-const beforeImg = document.getElementById("before-img");
+const fileInput = document.getElementById('fileUpload');
 
-dropZone.addEventListener("click", () => fileInput.click());
-
-fileInput.addEventListener("change", (e) => {
-  const file = e.target.files[0];
+fileInput.addEventListener('change', (event) => {
+  const file = event.target.files[0];
   if (file) {
-    const reader = new FileReader();
-    reader.onload = () => {
-      beforeImg.src = reader.result;
-    };
-    reader.readAsDataURL(file);
+    alert("تم رفع الصورة: " + file.name);
   }
-});
-
-document.getElementById("upscale-btn").addEventListener("click", () => {
-  alert("Upscaling started... (demo only)");
 });
