@@ -74,27 +74,8 @@ nav a:hover{color:#fff;background:rgba(255,255,255,0.03)}
   justify-content:center;
   align-items:center;
   text-align:center;
-  background:linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('images/hero-bg.jpg') no-repeat center/cover;
+  background:linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('images/your-image.png') no-repeat center/cover;
   padding:0 20px;
-}
-
-.hero h1{
-  font-size:3rem;
-  margin-bottom:12px;
-  animation: fadeInDown 1s ease-out forwards;
-}
-.hero p{
-  font-size:1.2rem;
-  margin-bottom:24px;
-  color:var(--muted);
-  animation: fadeIn 1.5s ease-out forwards;
-}
-.cta a{
-  margin:0 8px;
-  transition: transform 0.3s;
-}
-.cta a:hover{
-  transform: scale(1.05);
 }
 
 /* Services */
