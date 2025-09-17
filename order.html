@@ -19,9 +19,9 @@
     <nav>
       <a href="index.html">الرئيسية</a>
       <a href="about.html">نبذة عني</a>
-      <a href="#web">انشاء مواقع ويب</a>
-      <a href="#scripts">انشاء سكربتات</a>
-      <a href="#kali">كيفية تنزيل كالي لينكس</a>
+      <a href="web.html">انشاء مواقع ويب</a>
+      <a href="scripts.html">انشاء سكربتات</a>
+      <a href="kali.html">كيفية تنزيل كالي لينكس</a>
       <a href="order.html" class="badge">اطلب خدمة</a>
     </nav>
   </header>
@@ -29,7 +29,7 @@
   <section class="hero">
     <div class="hero-left">
       <h1>اطلب خدمة من Malek Alastal</h1>
-      <p>اختر نوع الخدمة التي تريد طلبها وأدخل التفاصيل أدناه، وسأقوم بالتواصل معك لتنفيذ الخدمة بدقة واحترافية.</p>
+      <p>املأ البيانات التالية وسأتواصل معك عبر البريد أو واتساب لتأكيد الطلب:</p>
 
       <form action="mailto:your-email@example.com" method="post" enctype="text/plain">
         <div class="row">
@@ -37,7 +37,15 @@
           <input type="email" name="email" placeholder="البريد الإلكتروني" required>
         </div>
         <div style="margin-top:8px">
-          <input type="text" name="service" placeholder="نوع الخدمة" required>
+          <input type="tel" name="phone" placeholder="رقم الواتساب" required>
+        </div>
+        <div style="margin-top:8px">
+          <select name="service" required>
+            <option value="">اختر الخدمة</option>
+            <option value="web">إنشاء موقع ويب</option>
+            <option value="scripts">إنشاء سكربت</option>
+            <option value="kali">تثبيت Kali Linux</option>
+          </select>
         </div>
         <div style="margin-top:8px">
           <textarea name="message" placeholder="تفاصيل الطلب" required></textarea>
@@ -47,7 +55,7 @@
         </div>
       </form>
 
-      <a class="btn" href="index.html" style="margin-top:15px;display:inline-block;">عودة للرئيسية</a>
+      <a class="btn ghost" href="index.html" style="margin-top:15px;display:inline-block;">عودة للرئيسية</a>
     </div>
   </section>
 
