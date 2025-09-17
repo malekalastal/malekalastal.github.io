@@ -1,26 +1,124 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ar">
 <head>
   <meta charset="UTF-8">
-  <title>Malek Alastal | AI Engineer</title>
-  <link rel="stylesheet" href="style.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>رفع الصور - AI Upscaler</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      background: linear-gradient(135deg, #0a0f29, #1d2647);
+      color: white;
+      text-align: center;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    header {
+      padding: 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    header h1 {
+      font-size: 24px;
+      color: #00d9ff;
+    }
+
+    header button {
+      background: #00d9ff;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 25px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .hero {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 40px;
+    }
+
+    .hero h2 {
+      font-size: 36px;
+      margin-bottom: 20px;
+    }
+
+    .upload-box {
+      margin-top: 30px;
+      padding: 40px;
+      background: rgba(255, 255, 255, 0.1);
+      border: 2px dashed #00d9ff;
+      border-radius: 15px;
+      width: 300px;
+    }
+
+    .upload-box input {
+      display: none;
+    }
+
+    .upload-box label {
+      display: block;
+      padding: 15px;
+      background: #00d9ff;
+      color: black;
+      border-radius: 10px;
+      cursor: pointer;
+      font-weight: bold;
+      margin-top: 15px;
+    }
+
+    footer {
+      padding: 15px;
+      background: rgba(255, 255, 255, 0.05);
+      font-size: 14px;
+    }
+  </style>
 </head>
 <body>
-  <div class="hero">
-    <video autoplay muted loop id="bg-video">
-      <source src="assets/bg.mp4" type="video/mp4">
-    </video>
-    <div class="overlay">
-      <h1 class="title">Welcome to Malek's World</h1>
-      <p class="subtitle">Where code meets creativity</p>
-      <a href="#main" class="btn">Explore</a>
+
+  <header>
+    <h1>AI Upscaler</h1>
+    <button>جرّب الآن</button>
+  </header>
+
+  <section class="hero">
+    <h2>حوّل صورك إلى دقة عالية بالذكاء الاصطناعي</h2>
+    <p>ارفع صورتك الآن وشاهد الفرق</p>
+
+    <div class="upload-box">
+      <p>📂 اسحب الصورة هنا أو اضغط للرفع</p>
+      <input type="file" id="fileUpload" accept="image/*">
+      <label for="fileUpload">اختر صورة</label>
     </div>
-  </div>
+  </section>
 
-  <main id="main">
-    <!-- باقي الموقع هنا -->
-  </main>
+  <footer>
+    © 2025 AI Upscaler - جميع الحقوق محفوظة
+  </footer>
 
-  <script src="script.js"></script>
+  <script>
+    const fileInput = document.getElementById('fileUpload');
+    fileInput.addEventListener('change', (event) => {
+      const file = event.target.files[0];
+      if(file) {
+        alert("تم رفع الصورة: " + file.name);
+      }
+    });
+  </script>
+
 </body>
 </html>
