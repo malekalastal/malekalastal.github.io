@@ -19,9 +19,9 @@
     <nav>
       <a href="index.html">الرئيسية</a>
       <a href="about.html">نبذة عني</a>
-      <a href="web.html">انشاء مواقع ويب</a>
-      <a href="scripts.html">انشاء سكربتات</a>
-      <a href="kali.html">كيفية تنزيل كالي لينكس</a>
+      <a href="web.html">مواقع ويب</a>
+      <a href="scripts.html">سكربتات</a>
+      <a href="kali.html">كالي لينكس</a>
       <a href="order.html" class="badge">اطلب خدمة</a>
     </nav>
   </header>
@@ -29,18 +29,18 @@
   <section class="hero">
     <div class="hero-left">
       <h1>اطلب خدمة من Malek Alastal</h1>
-      <p>املأ البيانات التالية وسأتواصل معك عبر البريد أو واتساب لتأكيد الطلب:</p>
+      <p>اختر الطريقة المفضلة للتواصل وسأرد عليك بأسرع وقت:</p>
 
-      <form action="mailto:your-email@example.com" method="post" enctype="text/plain">
+      <form id="orderForm">
         <div class="row">
-          <input type="text" name="name" placeholder="اسمك" required>
-          <input type="email" name="email" placeholder="البريد الإلكتروني" required>
+          <input type="text" id="name" placeholder="اسمك" required>
+          <input type="email" id="email" placeholder="البريد الإلكتروني" required>
         </div>
         <div style="margin-top:8px">
-          <input type="tel" name="phone" placeholder="رقم الواتساب" required>
+          <input type="tel" id="phone" placeholder="رقم الواتساب" required>
         </div>
         <div style="margin-top:8px">
-          <select name="service" required>
+          <select id="service" required>
             <option value="">اختر الخدمة</option>
             <option value="web">إنشاء موقع ويب</option>
             <option value="scripts">إنشاء سكربت</option>
@@ -48,19 +48,62 @@
           </select>
         </div>
         <div style="margin-top:8px">
-          <textarea name="message" placeholder="تفاصيل الطلب" required></textarea>
+          <textarea id="message" placeholder="تفاصيل الطلب" required></textarea>
         </div>
-        <div style="margin-top:10px">
-          <button class="btn" type="submit">أرسل الطلب</button>
-        </div>
-      </form>
 
-      <a class="btn ghost" href="index.html" style="margin-top:15px;display:inline-block;">عودة للرئيسية</a>
+        <div style="margin-top:15px; display:flex; gap:10px; flex-wrap:wrap;">
+          <!-- زر واتساب -->
+          <button type="button" class="btn" id="whatsappBtn">أرسل عبر واتساب</button>
+          <!-- زر SMS -->
+          <button type="button" class="btn" id="smsBtn">أرسل رسالة SMS</button>
+          <!-- زر فيسبوك -->
+          <a href="https://www.facebook.com/?locale=ar_AR" target="_blank" class="btn ghost">تواصل عبر فيسبوك</a>
+        </div>
+
+        <a class="btn ghost" href="index.html" style="margin-top:15px;display:inline-block;">عودة للرئيسية</a>
+      </form>
     </div>
   </section>
 
   <footer>
     © حق الملكية — Malek Alastal
   </footer>
+
+  <script>
+    // أزرار التواصل
+    const whatsappBtn = document.getElementById('whatsappBtn');
+    const smsBtn = document.getElementById('smsBtn');
+
+    whatsappBtn.addEventListener('click', ()=>{
+      const name = document.getElementById('name').value;
+      const phone = document.getElementById('phone').value;
+      const service = document.getElementById('service').value;
+      const message = document.getElementById('message').value;
+
+      if(!name || !phone || !service || !message){
+        alert('الرجاء ملء جميع الحقول!');
+        return;
+      }
+
+      const text = `مرحباً Malek, \nلقد طلب ${name} خدمة: ${service}\nرقم الواتساب: ${phone}\nتفاصيل الطلب: ${message}`;
+      // رابط واتساب (رقم +972598561044)
+      window.open(`https://wa.me/972598561044?text=${encodeURIComponent(text)}`, '_blank');
+    });
+
+    smsBtn.addEventListener('click', ()=>{
+      const name = document.getElementById('name').value;
+      const phone = document.getElementById('phone').value;
+      const service = document.getElementById('service').value;
+      const message = document.getElementById('message').value;
+
+      if(!name || !phone || !service || !message){
+        alert('الرجاء ملء جميع الحقول!');
+        return;
+      }
+
+      const smsText = `طلب خدمة من ${name}: ${service}\nرقم: ${phone}\nتفاصيل: ${message}`;
+      window.open(`sms:0598561044?body=${encodeURIComponent(smsText)}`);
+    });
+  </script>
 </body>
 </html>
