@@ -5,104 +5,136 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>اطلب خدمة — Malek Alastal</title>
   <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
+  <style>
+    body{
+      font-family:'Cairo',sans-serif;
+      background:linear-gradient(135deg,#0f172a,#1e293b);
+      color:#e6eef6;
+      margin:0;
+      padding:0;
+      display:flex;
+      flex-direction:column;
+      min-height:100vh;
+    }
+    header,footer{
+      background:#0b1220;
+      padding:15px 25px;
+      text-align:center;
+      font-weight:600;
+    }
+    .hero{
+      flex:1;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      padding:30px 15px;
+    }
+    .form-box{
+      background:#1e293b;
+      padding:25px;
+      border-radius:16px;
+      box-shadow:0 8px 20px rgba(0,0,0,0.3);
+      max-width:500px;
+      width:100%;
+      animation:fadeIn 0.8s ease;
+    }
+    .form-box h1{
+      font-size:22px;
+      margin-bottom:12px;
+      text-align:center;
+      color:#0b84ff;
+    }
+    .form-box p{
+      font-size:14px;
+      color:#9aa6b2;
+      text-align:center;
+      margin-bottom:20px;
+    }
+    input,select,textarea{
+      width:100%;
+      padding:10px 12px;
+      margin-top:10px;
+      border:none;
+      border-radius:8px;
+      font-size:14px;
+      outline:none;
+    }
+    textarea{min-height:100px;resize:vertical;}
+    .btn{
+      background:#0b84ff;
+      color:#fff;
+      padding:12px;
+      margin-top:15px;
+      border:none;
+      border-radius:8px;
+      width:100%;
+      font-size:15px;
+      cursor:pointer;
+      transition:0.3s;
+    }
+    .btn:hover{background:#0a6fd6;}
+    .ghost{
+      background:transparent;
+      border:2px solid #0b84ff;
+      color:#0b84ff;
+    }
+    .ghost:hover{background:#0b84ff;color:#fff;}
+    @keyframes fadeIn{
+      from{opacity:0;transform:translateY(20px);}
+      to{opacity:1;transform:translateY(0);}
+    }
+  </style>
 </head>
 <body>
-  <header>
-    <div class="brand">
-      <div class="logo">M</div>
-      <div>
-        <div class="name">Malek Alastal</div>
-        <div class="role">مبرمج | مطوّر ويب | سكربتات</div>
-      </div>
-    </div>
-    <nav>
-      <a href="index.html">الرئيسية</a>
-      <a href="about.html">نبذة عني</a>
-      <a href="web.html">مواقع ويب</a>
-      <a href="scripts.html">سكربتات</a>
-      <a href="kali.html">كالي لينكس</a>
-      <a href="order.html" class="badge">اطلب خدمة</a>
-    </nav>
-  </header>
+  <header>Malek Alastal — اطلب خدمة</header>
 
   <section class="hero">
-    <div class="hero-left">
-      <h1>اطلب خدمة من Malek Alastal</h1>
-      <p>اختر الطريقة المفضلة للتواصل وسأرد عليك بأسرع وقت:</p>
+    <div class="form-box">
+      <h1>اطلب خدمتك الآن</h1>
+      <p>املأ البيانات واختر وسيلة التواصل المفضلة</p>
 
       <form id="orderForm">
-        <div class="row">
-          <input type="text" id="name" placeholder="اسمك" required>
-          <input type="email" id="email" placeholder="البريد الإلكتروني" required>
-        </div>
-        <div style="margin-top:8px">
-          <input type="tel" id="phone" placeholder="رقم الواتساب" required>
-        </div>
-        <div style="margin-top:8px">
-          <select id="service" required>
-            <option value="">اختر الخدمة</option>
-            <option value="web">إنشاء موقع ويب</option>
-            <option value="scripts">إنشاء سكربت</option>
-            <option value="kali">تثبيت Kali Linux</option>
-          </select>
-        </div>
-        <div style="margin-top:8px">
-          <textarea id="message" placeholder="تفاصيل الطلب" required></textarea>
-        </div>
+        <input type="text" id="name" placeholder="اسمك" required>
+        <input type="email" id="email" placeholder="بريدك الإلكتروني" required>
+        <textarea id="message" placeholder="تفاصيل الطلب" required></textarea>
+        
+        <select id="method" required>
+          <option value="">اختر طريقة التواصل</option>
+          <option value="whatsapp">واتساب</option>
+          <option value="facebook">فيسبوك</option>
+          <option value="sms">رسالة SMS</option>
+        </select>
 
-        <div style="margin-top:15px; display:flex; gap:10px; flex-wrap:wrap;">
-          <!-- زر واتساب -->
-          <button type="button" class="btn" id="whatsappBtn">أرسل عبر واتساب</button>
-          <!-- زر SMS -->
-          <button type="button" class="btn" id="smsBtn">أرسل رسالة SMS</button>
-          <!-- زر فيسبوك -->
-          <a href="https://www.facebook.com/?locale=ar_AR" target="_blank" class="btn ghost">تواصل عبر فيسبوك</a>
-        </div>
-
-        <a class="btn ghost" href="index.html" style="margin-top:15px;display:inline-block;">عودة للرئيسية</a>
+        <button type="submit" class="btn">إرسال الطلب</button>
       </form>
     </div>
   </section>
 
-  <footer>
-    © حق الملكية — Malek Alastal
-  </footer>
+  <footer>© 2025 — Malek Alastal</footer>
 
   <script>
-    // أزرار التواصل
-    const whatsappBtn = document.getElementById('whatsappBtn');
-    const smsBtn = document.getElementById('smsBtn');
+    const form = document.getElementById("orderForm");
+    form.addEventListener("submit", function(e){
+      e.preventDefault();
+      const name = document.getElementById("name").value;
+      const email = document.getElementById("email").value;
+      const msg = document.getElementById("message").value;
+      const method = document.getElementById("method").value;
 
-    whatsappBtn.addEventListener('click', ()=>{
-      const name = document.getElementById('name').value;
-      const phone = document.getElementById('phone').value;
-      const service = document.getElementById('service').value;
-      const message = document.getElementById('message').value;
+      let fullMsg = `مرحباً أنا ${name}%0Aبريدي: ${email}%0Aطلبي:%0A${msg}`;
+      let url = "";
 
-      if(!name || !phone || !service || !message){
-        alert('الرجاء ملء جميع الحقول!');
-        return;
+      if(method === "whatsapp"){
+        url = `https://wa.me/972598561044?text=${fullMsg}`;
+      }
+      else if(method === "facebook"){
+        url = "https://www.facebook.com/?locale=ar_AR";
+      }
+      else if(method === "sms"){
+        url = `sms:0598561044?body=${fullMsg}`;
       }
 
-      const text = `مرحباً Malek, \nلقد طلب ${name} خدمة: ${service}\nرقم الواتساب: ${phone}\nتفاصيل الطلب: ${message}`;
-      // رابط واتساب (رقم +972598561044)
-      window.open(`https://wa.me/972598561044?text=${encodeURIComponent(text)}`, '_blank');
-    });
-
-    smsBtn.addEventListener('click', ()=>{
-      const name = document.getElementById('name').value;
-      const phone = document.getElementById('phone').value;
-      const service = document.getElementById('service').value;
-      const message = document.getElementById('message').value;
-
-      if(!name || !phone || !service || !message){
-        alert('الرجاء ملء جميع الحقول!');
-        return;
-      }
-
-      const smsText = `طلب خدمة من ${name}: ${service}\nرقم: ${phone}\nتفاصيل: ${message}`;
-      window.open(`sms:0598561044?body=${encodeURIComponent(smsText)}`);
+      if(url) window.open(url, "_blank");
     });
   </script>
 </body>
