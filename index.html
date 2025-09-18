@@ -8,6 +8,8 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <canvas id="bgCanvas"></canvas>
+
   <!-- Header -->
   <header class="glass">
     <div class="brand">
@@ -18,28 +20,27 @@
       </div>
     </div>
     <nav>
-      <a href="about.html">نبذة عني</a>
-      <a href="web.html">مواقع ويب</a>
-      <a href="scripts.html">سكربتات</a>
-      <a href="kali.html">كالي لينكس</a>
+      <a href="#hero">الرئيسية</a>
+      <a href="#services">الخدمات</a>
+      <a href="#portfolio">أعمالي</a>
       <a href="order.html" class="badge">اطلب خدمة</a>
     </nav>
   </header>
 
   <!-- Hero -->
-  <section class="hero">
+  <section class="hero" id="hero">
     <div class="hero-content">
       <h1>مرحباً، أنا <span>Malek Alastal</span></h1>
       <p>أقدّم حلول برمجية احترافية، مواقع ويب وسكربتات مخصصة بجودة عالية.</p>
       <div class="cta">
         <a class="btn" href="order.html">🚀 اطلب خدمة الآن</a>
-        <a class="btn ghost" href="web.html">📂 شاهد أعمالي</a>
+        <a class="btn ghost" href="#portfolio">📂 شاهد أعمالي</a>
       </div>
     </div>
   </section>
 
   <!-- Services -->
-  <section class="services">
+  <section class="services" id="services">
     <h2>الخدمات</h2>
     <div class="services-grid">
       <div class="card">
@@ -61,7 +62,7 @@
   </section>
 
   <!-- Portfolio -->
-  <section class="portfolio">
+  <section class="portfolio" id="portfolio">
     <h2>أعمال مختارة من GitHub</h2>
     <div id="github-projects" class="portfolio-grid"></div>
   </section>
@@ -76,31 +77,6 @@
     </div>
   </footer>
 
-  <!-- GitHub Projects Script -->
-  <script>
-    fetch("https://api.github.com/users/malekalastal/repos?sort=updated&per_page=6")
-      .then(res => res.json())
-      .then(data => {
-        let container = document.getElementById("github-projects");
-        data.forEach(repo => {
-          let card = document.createElement("div");
-          card.className = "card";
-          card.innerHTML = `
-            <a href="${repo.html_url}" target="_blank">
-              <div class="card-content">
-                <h3>${repo.name}</h3>
-                <p>${repo.description ? repo.description : "مشروع بدون وصف"}</p>
-                <span class="lang">${repo.language || "غير محدد"}</span>
-              </div>
-            </a>
-          `;
-          container.appendChild(card);
-        });
-      })
-      .catch(err => {
-        document.getElementById("github-projects").innerHTML =
-          "<p>تعذر تحميل المشاريع من GitHub حالياً ⚠️</p>";
-      });
-  </script>
+  <script src="script.js"></script>
 </body>
 </html>
