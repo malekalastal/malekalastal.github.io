@@ -62,12 +62,8 @@
 
   <!-- Portfolio -->
   <section class="portfolio">
-    <h2>أعمال مختارة</h2>
-    <div class="portfolio-grid">
-      <div class="card"><img src="images/portfolio1.png" alt="مشروع 1"></div>
-      <div class="card"><img src="images/portfolio2.png" alt="مشروع 2"></div>
-      <div class="card"><img src="images/portfolio3.png" alt="مشروع 3"></div>
-    </div>
+    <h2>أعمال مختارة من GitHub</h2>
+    <div id="github-projects" class="portfolio-grid"></div>
   </section>
 
   <!-- Footer -->
@@ -79,5 +75,32 @@
       <a href="#"><img src="images/whatsapp.svg" alt="WhatsApp"></a>
     </div>
   </footer>
+
+  <!-- GitHub Projects Script -->
+  <script>
+    fetch("https://api.github.com/users/malekalastal/repos?sort=updated&per_page=6")
+      .then(res => res.json())
+      .then(data => {
+        let container = document.getElementById("github-projects");
+        data.forEach(repo => {
+          let card = document.createElement("div");
+          card.className = "card";
+          card.innerHTML = `
+            <a href="${repo.html_url}" target="_blank">
+              <div class="card-content">
+                <h3>${repo.name}</h3>
+                <p>${repo.description ? repo.description : "مشروع بدون وصف"}</p>
+                <span class="lang">${repo.language || "غير محدد"}</span>
+              </div>
+            </a>
+          `;
+          container.appendChild(card);
+        });
+      })
+      .catch(err => {
+        document.getElementById("github-projects").innerHTML =
+          "<p>تعذر تحميل المشاريع من GitHub حالياً ⚠️</p>";
+      });
+  </script>
 </body>
 </html>
