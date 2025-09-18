@@ -8,7 +8,7 @@ document.querySelectorAll('a[href^="#"]').forEach(a=>{
   });
 });
 
-// خلفية Canvas متحركة (دوائر)
+// Canvas خلفية متحركة
 const canvas = document.getElementById('bgCanvas');
 if(canvas){
   const ctx = canvas.getContext('2d');
@@ -17,7 +17,7 @@ if(canvas){
   window.addEventListener('resize',resize);
   resize();
 
-  const circles = Array.from({length:50},()=>({
+  const circles = Array.from({length:50},() => ({
     x:Math.random()*w,
     y:Math.random()*h,
     r:Math.random()*4+2,
@@ -41,21 +41,19 @@ if(canvas){
   animate();
 }
 
-// ظهور الكروت عند Scroll (Services & Portfolio)
+// ظهور الكروت عند Scroll
 const cards = document.querySelectorAll('.card');
 function showCards(){
   const triggerBottom = window.innerHeight * 0.9;
   cards.forEach(card=>{
     const top = card.getBoundingClientRect().top;
-    if(top < triggerBottom){
-      card.classList.add('show');
-    }
+    if(top < triggerBottom) card.classList.add('show');
   });
 }
 window.addEventListener('scroll', showCards);
 showCards();
 
-// Parallax خفيف للPortfolio عند Scroll
+// Parallax خفيف للPortfolio
 const portfolioGrid = document.querySelector('.portfolio-grid');
 window.addEventListener('scroll', ()=>{
   if(portfolioGrid){
@@ -63,3 +61,28 @@ window.addEventListener('scroll', ()=>{
     portfolioGrid.style.transform = `translateY(${scroll*0.05}px)`;
   }
 });
+
+// GitHub Portfolio
+fetch("https://api.github.com/users/malekalastal/repos?sort=updated&per_page=6")
+  .then(res => res.json())
+  .then(data => {
+    let container = document.getElementById("github-projects");
+    data.forEach(repo => {
+      let card = document.createElement("div");
+      card.className = "card";
+      card.innerHTML = `
+        <a href="${repo.html_url}" target="_blank">
+          <div class="card-content">
+            <h3>${repo.name}</h3>
+            <p>${repo.description ? repo.description : "مشروع بدون وصف"}</p>
+            <span class="lang">${repo.language || "غير محدد"}</span>
+          </div>
+        </a>
+      `;
+      container.appendChild(card);
+    });
+  })
+  .catch(err => {
+    document.getElementById("github-projects").innerHTML =
+      "<p>تعذر تحميل المشاريع من GitHub حالياً ⚠️</p>";
+  });
