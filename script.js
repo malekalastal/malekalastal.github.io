@@ -1,57 +1,88 @@
-// أيقونة الدردشة وعرض/إخفاء النافذة
-const icon = document.getElementById('mflf-icon');
-const chat = document.getElementById('mflf-chat');
-const closeBtn = document.getElementById('mflf-close');
-const loginSection = document.getElementById('mflf-login');
-const loginBtn = document.getElementById('mflf-login-btn');
-const usernameInput = document.getElementById('mflf-username');
-const messages = document.getElementById('mflf-messages');
-const input = document.getElementById('mflf-input');
+// Smooth scroll للروابط الداخلية
+document.querySelectorAll('a[href^="#"]').forEach(a=>{
+  a.addEventListener('click', function(e){
+    e.preventDefault();
+    const id = this.getAttribute('href').slice(1);
+    const el = document.getElementById(id);
+    if(el) el.scrollIntoView({behavior:'smooth', block:'start'});
+  });
+});
 
-const friends = ["سامي","ليلى","خالد","هند","أحمد"];
+// Canvas خلفية متحركة
+const canvas = document.getElementById('bgCanvas');
+if(canvas){
+  const ctx = canvas.getContext('2d');
+  let w,h;
+  function resize(){w=canvas.width=window.innerWidth; h=canvas.height=window.innerHeight;}
+  window.addEventListener('resize',resize);
+  resize();
 
-icon.addEventListener('click', () => chat.style.display = 'flex');
-closeBtn.addEventListener('click', () => chat.style.display = 'none');
+  const circles = Array.from({length:50},() => ({
+    x:Math.random()*w,
+    y:Math.random()*h,
+    r:Math.random()*4+2,
+    dx:(Math.random()-0.5)*0.5,
+    dy:(Math.random()-0.5)*0.5
+  }));
 
-// تسجيل الدخول الوهمي
-loginBtn.addEventListener('click', () => {
-  const name = usernameInput.value.trim();
-  if(name){
-    loginSection.style.display = 'none';
-    messages.style.display = 'block';
-    input.style.display = 'block';
-    const welcome = document.createElement('div');
-    welcome.className = 'mflf-msg mflf-friend';
-    welcome.textContent = "مفلف: أهلاً " + name + "!";
-    messages.appendChild(welcome);
+  function animate(){
+    ctx.clearRect(0,0,w,h);
+    circles.forEach(c=>{
+      ctx.beginPath();
+      ctx.arc(c.x,c.y,c.r,0,Math.PI*2);
+      ctx.fillStyle='rgba(11,132,255,0.3)';
+      ctx.fill();
+      c.x+=c.dx; c.y+=c.dy;
+      if(c.x<0||c.x>w) c.dx*=-1;
+      if(c.y<0||c.y>h) c.dy*=-1;
+    });
+    requestAnimationFrame(animate);
+  }
+  animate();
+}
+
+// ظهور الكروت عند Scroll
+const cards = document.querySelectorAll('.card');
+function showCards(){
+  const triggerBottom = window.innerHeight * 0.9;
+  cards.forEach(card=>{
+    const top = card.getBoundingClientRect().top;
+    if(top < triggerBottom) card.classList.add('show');
+  });
+}
+window.addEventListener('scroll', showCards);
+showCards();
+
+// Parallax خفيف للPortfolio
+const portfolioGrid = document.querySelector('.portfolio-grid');
+window.addEventListener('scroll', ()=>{
+  if(portfolioGrid){
+    const scroll = window.scrollY;
+    portfolioGrid.style.transform = `translateY(${scroll*0.05}px)`;
   }
 });
 
-// إرسال الرسائل
-input.addEventListener('keypress', function(e){
-  if(e.key === 'Enter' && input.value.trim() !== ''){
-    const userMsg = document.createElement('div');
-    userMsg.className = 'mflf-msg mflf-user';
-    userMsg.textContent = input.value;
-    messages.appendChild(userMsg);
-
-    setTimeout(() => {
-      const friendMsg = document.createElement('div');
-      friendMsg.className = 'mflf-msg mflf-friend';
-      const friend = friends[Math.floor(Math.random()*friends.length)];
-      const replies = [
-        "هههه شفت رسالتك!",
-        "ممتاز 👍",
-        "😂😂 فهمتك",
-        "أكيد، فكرة رائعة!",
-        "واو!"
-      ];
-      friendMsg.textContent = friend + ": " + replies[Math.floor(Math.random()*replies.length)];
-      messages.appendChild(friendMsg);
-      messages.scrollTop = messages.scrollHeight;
-    }, 1200);
-
-    input.value = '';
-    messages.scrollTop = messages.scrollHeight;
-  }
-});
+// GitHub Portfolio
+fetch("https://api.github.com/users/malekalastal/repos?sort=updated&per_page=6")
+  .then(res => res.json())
+  .then(data => {
+    let container = document.getElementById("github-projects");
+    data.forEach(repo => {
+      let card = document.createElement("div");
+      card.className = "card";
+      card.innerHTML = `
+        <a href="${repo.html_url}" target="_blank">
+          <div class="card-content">
+            <h3>${repo.name}</h3>
+            <p>${repo.description ? repo.description : "مشروع بدون وصف"}</p>
+            <span class="lang">${repo.language || "غير محدد"}</span>
+          </div>
+        </a>
+      `;
+      container.appendChild(card);
+    });
+  })
+  .catch(err => {
+    document.getElementById("github-projects").innerHTML =
+      "<p>تعذر تحميل المشاريع من GitHub حالياً ⚠️</p>";
+  });
